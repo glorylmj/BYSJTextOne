@@ -110,7 +110,10 @@
         </tr>
     </table>
     <div>
-        <input type="button" value="增加商品">&nbsp;&nbsp;&nbsp;
+        <a href="../insert/insert.jsp">
+            增加商品
+<%--            <input type="button" value="增加商品" >--%>
+        </a>&nbsp;&nbsp;&nbsp;
         <input type="button" value="修改商品">&nbsp;&nbsp;&nbsp;
         <input type="button" value="删除商品">
     </div>

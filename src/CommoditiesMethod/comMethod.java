@@ -108,13 +108,17 @@ public class comMethod {
         Connection con = null;
         PreparedStatement ps=null;
         ResultSet rs=null;
+        int num = 0;
         con = DBUtil.getConnection();
         commodities com = new commodities();
-        String sql="SELECT COUNT(*) AS zonghe FROM commodities where name = ?";
+        String sql="SELECT COUNT(*) FROM commodities where name = ?";
         try {
             ps = con.prepareStatement(sql);
             ps.setString(1,comname);
             rs = ps.executeQuery();
+            while (rs.next()){
+                num = rs.getInt(1);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
@@ -122,7 +126,7 @@ public class comMethod {
             DBUtil.close(ps);
             DBUtil.close(con);
         }
-        return rs.getInt(1);
+        return num;
     }
 
 
