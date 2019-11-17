@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<c3p0-config>
+    <!-- 这是默认配置信息 -->
+    <default-config>
+        <!-- 连接四大参数配置 -->
+        <property name="jdbcUrl">jdbc:mysql://localhost:3306/jxc</property>
+        <property name="driverClass">com.mysql.jdbc.Driver</property>
+        <property name="user">root</property>
+        <property name="password">123456</property>
+        <!-- 池参数配置 -->
+        <property name="acquireIncrement">3</property>
+        <property name="initialPoolSize">10</property>
+        <property name="minPoolSize">2</property>
+        <property name="maxPoolSize">10</property>
+    </default-config>
+<!--    &lt;!&ndash; 命名的配置,可以通过方法调用实现 &ndash;&gt;-->
+<!--    <named-config name="test">-->
+<!--        <property name="user">root</property>-->
+<!--        <property name="password">123456</property>-->
+<!--        <property name="jdbcUrl">jdbc:mysql://localhost:3306/jxc</property>-->
+<!--        <property name="driverClass">com.mysql.jdbc.Driver</property>-->
+<!--        &lt;!&ndash; 如果池中数据连接不够时一次增长多少个 &ndash;&gt;-->
+<!--        <property name="acquireIncrement">5</property>-->
+<!--        &lt;!&ndash; 初始化数据库连接池时连接的数量 &ndash;&gt;-->
+<!--        <property name="initialPoolSize">20</property>-->
+<!--        &lt;!&ndash; 数据库连接池中的最大的数据库连接数 &ndash;&gt;-->
+<!--        <property name="maxPoolSize">25</property>-->
+<!--        &lt;!&ndash; 数据库连接池中的最小的数据库连接数 &ndash;&gt;-->
+<!--        <property name="minPoolSize">5</property>-->
+<!--    </named-config>-->
+
+
+</c3p0-config>
