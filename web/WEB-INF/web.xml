@@ -51,4 +51,31 @@
         <servlet-name>InsertCommodities</servlet-name>
         <url-pattern>/InsertCommdities</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteCommodities</servlet-name>
+        <servlet-class>DeleteCommodities.DeleteCommodities</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteCommodities</servlet-name>
+        <url-pattern>/DeleteCommodities</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UpdateCommodities</servlet-name>
+        <servlet-class>UpdateCommodities.UpdateCommodities</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateCommodities</servlet-name>
+        <url-pattern>/UpdateCommodities</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdminUpdatePass</servlet-name>
+        <servlet-class>updatepassword.Adminpass</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminUpdatePass</servlet-name>
+        <url-pattern>/AdminUpdatePass</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -29,6 +29,7 @@
         用户名:<input type="text" name="username2">
         密&nbsp;码:<input type="password" name="password2">
         重复密码:<input type="password" name="password3">
+        身份：<input type="text" name="identity">
         <input type="submit" value="立即注册">
     </form>
 </body>

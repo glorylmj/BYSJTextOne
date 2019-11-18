@@ -22,6 +22,7 @@ public class register extends HttpServlet {
         String username = request.getParameter("username2");
         String password = request.getParameter("password2");
         String password2 = request.getParameter("password3");
+        int identity = Integer.parseInt(request.getParameter("identity"));
         //查询数据库是否存在用户名
         String pass = UserFind.FindUser(username);
         System.out.println(pass);
@@ -42,11 +43,14 @@ public class register extends HttpServlet {
             request.setAttribute("msg","用户名不能为空");
             RequestDispatcher qr = request.getRequestDispatcher("/Registration/ZhuCe.jsp");//得到一个转发器
             qr.forward(request,response);//转发
+        }else if (identity!=1&&identity!=2){
+            request.setAttribute("msg","身份为1或者2");
+            RequestDispatcher qr = request.getRequestDispatcher("/Registration/ZhuCe.jsp");//得到一个转发器
+            qr.forward(request,response);//转发
         }
-
         else {
              InsertUser user = new InsertUser();
-             user.insertUser(username,password);
+             user.insertUser(username,password, identity);
             response.sendRedirect("/login/login.jsp");
         }
     }

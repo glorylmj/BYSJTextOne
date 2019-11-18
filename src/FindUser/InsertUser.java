@@ -1,7 +1,7 @@
 package FindUser;
 
 import DBUtil.DBUtil;
-import systemcontext.User;
+import User.User;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 import java.beans.PropertyVetoException;
@@ -47,18 +47,19 @@ public class InsertUser {
         return conn;
     }
 
-    public void insertUser(String username,String password){
+    public void insertUser(String username,String password,int identity){
         Connection con = null;
         PreparedStatement ps=null;
         ResultSet rs=null;
         String pass=null;
         con = DBUtil.getConnection();
-        String sql = "insert into user (username,password) values (?,?)";
+        String sql = "insert into user (username,password,identity) values (?,?,?)";
         User user = new User();
         try{
             ps = con.prepareStatement(sql);
             ps.setString(1,username);
             ps.setString(2,password);
+            ps.setInt(3,identity);
             ps.executeUpdate();
 //            while (rs.next()) {
 //                user.setUsername(rs.getString("username"));

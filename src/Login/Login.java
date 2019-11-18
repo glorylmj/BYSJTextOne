@@ -39,7 +39,7 @@ public class Login extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String pass = UserFind.FindUser(username);
-
+        int identity = UserFind.FindUserIdentity(username);
 
         /**
          * 2.校验用户名密码是否正确
@@ -59,10 +59,19 @@ public class Login extends HttpServlet {
              * 重定向到Succ1.jsp
              *
              */
-            HttpSession session = request.getSession();//获取session
-            session.setAttribute("username",username);//向域中保存session
-            response.sendRedirect("/Home/home.jsp");
+            if (identity==1) {
+//              HttpSession session = request.getSession();//获取session
+              // session.setAttribute("username", username);//向域中保存session
+//                response.sendRedirect("/Home/home.jsp");
+                request.setAttribute("username",username);
+                request.getRequestDispatcher("/Home/home.jsp").forward(request,response);
+            }else {
 
+ //          session.setAttribute("username", username);//向域中保存session
+//                response.sendRedirect("employees/employees.jsp");
+                request.setAttribute("username",username);
+                request.getRequestDispatcher("employees/employees.jsp").forward(request,response);
+            }
         }else {
             //登陆失败
             /**

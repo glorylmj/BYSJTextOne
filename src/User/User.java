@@ -1,9 +1,18 @@
-package systemcontext;
+package User;
 
 public class User {
     public String ID;
     public String username;
     public String password;
+    public int identity;
+
+    public int getIdentity() {
+        return identity;
+    }
+
+    public void setIdentity(int identity) {
+        this.identity = identity;
+    }
 
     public String getID() {
         return ID;
@@ -35,6 +44,7 @@ public class User {
                 "ID='" + ID + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", identity=" + identity +
                 '}';
     }
 }

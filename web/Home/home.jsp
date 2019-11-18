@@ -1,4 +1,4 @@
-<%@ page import="systemcontext.User" %>
+<%@ page import="User.User" %>
 <%@ page import="commoditiesDao.commodities" %>
 <%@ page import="java.util.List" %>
 <%@ page import="CommoditiesMethod.comMethod" %>
@@ -41,7 +41,8 @@
         Pager<commodities> pages = com.FindAll();
         int pageIndex = pages.getPageIndex();
         List<commodities> commodities = pages.getDatas();
-
+        String username = request.getParameter("username");
+        session.setAttribute("username",username);
     %>
 
 </head>
@@ -49,6 +50,19 @@
     <div class="div1">
         <div class="div2">
             欢迎使用易管理进销存系统！
+            <%
+                String name = "";
+                String uname = (String) request.getAttribute("username");
+                if (uname != null){
+                    name = uname;
+                }
+            %>
+            <font color="red">
+                <b>
+                    <%=uname
+                    %>
+                </b>
+            </font>
         </div>
     </div>
     <table align="center" border="1" width="800">
@@ -114,8 +128,9 @@
             增加商品
 <%--            <input type="button" value="增加商品" >--%>
         </a>&nbsp;&nbsp;&nbsp;
-        <input type="button" value="修改商品">&nbsp;&nbsp;&nbsp;
-        <input type="button" value="删除商品">
+        <a href="../delet/delet.jsp">删除商品</a>
+        <a href="../update/update.jsp">修改商品</a>
+        <a href="../adminUpdatePass/updatepass.jsp">修改密码</a>
     </div>
 
 </body>

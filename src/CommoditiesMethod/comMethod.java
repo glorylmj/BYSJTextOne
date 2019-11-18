@@ -159,7 +159,7 @@ public class comMethod {
 
 
 //删除数据（根据商品名字）
-    public static void deletcom(String comname){
+    public  void deletcom(String comname){
         Connection con = null;
         PreparedStatement ps=null;
         ResultSet rs=null;
@@ -168,6 +168,7 @@ public class comMethod {
         try {
             ps = con.prepareStatement(sql);
             ps.setString(1,comname);
+            ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
@@ -179,7 +180,7 @@ public class comMethod {
 
 
 //更新数据
-    public static void updateCom(commodities commodities,String upname){
+    public void updateCom(commodities commodities,String upname){
         Connection con = null;
         PreparedStatement ps=null;
         ResultSet rs=null;
@@ -193,6 +194,7 @@ public class comMethod {
             ps.setDouble(4,commodities.getPrice());
             ps.setString(5,commodities.getSource());
             ps.setString(6,upname);
+            ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {

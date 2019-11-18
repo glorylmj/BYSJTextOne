@@ -1,6 +1,6 @@
 package FindUser;
 import DBUtil.DBUtil;
-import systemcontext.User;
+import User.User;
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 
@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 
 public class UserFind {
@@ -48,7 +49,7 @@ public class UserFind {
         return conn;
     }
 
-    public static String  FindUser(String uname) {
+    public static String FindUser(String uname) {
         Connection con = null;
         PreparedStatement ps=null;
         ResultSet rs=null;
@@ -73,6 +74,33 @@ public class UserFind {
             DBUtil.close(rs);
         }
         return user.password;
+    }
+
+
+    public static Integer FindUserIdentity(String uname) {
+        Connection con = null;
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        con = DBUtil.getConnection();
+        String sql = "select identity from user where username=?";
+        User user = new User();
+        try {
+            ps = con.prepareStatement(sql);
+            ps.setString(1,uname);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                user.setIdentity(rs.getInt("identity"));
+//                pass = rs.getString("password");
+            }
+            // System.out.println(user.password);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            DBUtil.close(con);
+            DBUtil.close(ps);
+            DBUtil.close(rs);
+        }
+        return user.identity;
     }
 
 }

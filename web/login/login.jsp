@@ -1,4 +1,5 @@
-<%--
+<%@ page import="User.User" %>
+<%@ page import="Login.Login" %><%--
   Created by IntelliJ IDEA.
   User: admin
   Date: 2019/11/1
@@ -29,6 +30,11 @@
             text-align: center;
         }
     </style>
+<%--    <script type="application/javascript">--%>
+<%--       var username = document.getElementsByName("username");--%>
+<%--       session.setAttribute("username", username);--%>
+<%--       console.log( session.setAttribute("username", username));--%>
+<%--    </script>--%>
 </head>
 <body>
     <div class="div1">
