@@ -15,6 +15,19 @@
 <%--    %>--%>
 </head>
 <body>
+<%
+    String message = "";
+    String msg = (String) request.getAttribute("msg");
+    if (msg != null){
+        message = msg;
+    }
+%>
+<font color="red">
+    <b>
+        <%=message
+        %>
+    </b>
+</font>
     <form action="/AdminUpdatePass" method="post">
         用户名：<input type="text" name="name"
                    value=" <%=session.getAttribute("username") %>"  disabled>

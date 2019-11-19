@@ -78,4 +78,23 @@
         <servlet-name>AdminUpdatePass</servlet-name>
         <url-pattern>/AdminUpdatePass</url-pattern>
     </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>UserUpdatePass</servlet-name>
+        <servlet-class>updatepassword.Userpass</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserUpdatePass</servlet-name>
+        <url-pattern>/UserUpdatePass</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ECInsert</servlet-name>
+        <servlet-class>EmpComInsert.ECInsert</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ECInsert</servlet-name>
+        <url-pattern>/ECInsert</url-pattern>
+    </servlet-mapping>
 </web-app>

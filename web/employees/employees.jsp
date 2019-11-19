@@ -30,6 +30,7 @@
         if (uname != null){
             name = uname;
         }
+        session.setAttribute("username",uname);
     %>
     <font color="red">
         <b>
@@ -96,7 +97,7 @@
         </tr>
     </table>
 
-    <a href="#">查看销售量</a>
+    <a href="../esales/esales.jsp">查看销售量</a>
     <a href="#">修改密码</a>
 </body>
 </html>
