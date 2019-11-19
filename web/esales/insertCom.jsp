@@ -12,11 +12,24 @@
 </head>
 <body>
     <form action="/ECInsert" >
-        <table>
-            销售员:<input type="text" value="<%=session.getAttribute("username")%>" name="username" disabled>
-            商品名称：<input type="text" name="comname">
-            销售数量: <input type="text" name="comsales">
-            <input type="submit" value="添加">
+            <table>
+                销售员:<input type="text" value="<%=session.getAttribute("username")%>" name="username" disabled>
+                商品名称：<input type="text" name="comname">
+                销售数量: <input type="text" name="comsales">
+                <input type="submit" value="添加"><br>
+                <%
+                    String message = "";
+                    String msg = (String) request.getAttribute("msg");
+                    if (msg != null){
+                        message = msg;
+                    }
+                %>
+                <font color="red">
+                    <b>
+                        <%=message
+                        %>
+                    </b>
+                </font>
         </table>
     </form>
 </body>

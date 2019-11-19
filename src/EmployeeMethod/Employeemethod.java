@@ -7,6 +7,7 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 import commoditiesDao.commodities;
 import systemcontext.SystemContext;
 
+import javax.websocket.Session;
 import java.beans.PropertyVetoException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -127,6 +128,7 @@ public void InsertCom(Employee  employee){
     Connection con = null;
     PreparedStatement ps=null;
     ResultSet rs=null;
+    con = DBUtil.getConnection();
     String sql= "INSERT INTO employees (username,esales,comname) VALUES(?,?,?)";
     try {
         ps=con.prepareStatement(sql);
@@ -167,6 +169,59 @@ public void InsertCom(Employee  employee){
             DBUtil.close(con);
         }
         return num;
+    }
+
+
+
+
+    //删除商品
+    public void DeleteCom(String comname,String username){
+        Connection con = null;
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        con = DBUtil.getConnection();
+        String sql="DELETE FROM employees WHERE comname=? AND username=?";
+        try {
+            ps=con.prepareStatement(sql);
+            ps.setString(1,comname);
+            ps.setString(2,username);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            DBUtil.close(con);
+            DBUtil.close(ps);
+            DBUtil.close(rs);
+        }
+    }
+
+    //更新操作
+    public void UpdateCom(Employee employee,String username){
+        Connection con = null;
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        con = DBUtil.getConnection();
+        String sql="UPDATE employees SET esales=esales+? WHERE comname=? AND username=?";
+        String sql2="UPDATE commodities SET sales = sales+?,Inventory=Inventory-? WHERE `name`=?";
+        try {
+            ps= con.prepareStatement(sql);
+            ps.setInt(1,employee.getEsales());
+            ps.setString(2,employee.getComname());
+            ps.setString(3,username);
+            ps.executeUpdate();
+
+            ps=con.prepareStatement(sql2);
+            ps.setInt(1,employee.getEsales());
+            ps.setInt(2,employee.getEsales());
+            ps.setString(3,employee.getComname());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            DBUtil.close(con);
+            DBUtil.close(ps);
+            DBUtil.close(rs);
+        }
     }
 
 }

@@ -97,4 +97,22 @@
         <servlet-name>ECInsert</servlet-name>
         <url-pattern>/ECInsert</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ECdelete</servlet-name>
+        <servlet-class>EmpComInsert.ECDelete</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ECdelete</servlet-name>
+        <url-pattern>/ECDelet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UpdateCom</servlet-name>
+        <servlet-class>EmpComInsert.ECUpdate</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UpdateCom</servlet-name>
+        <url-pattern>/UpdateCom</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -2,7 +2,6 @@ package EmpComInsert;
 
 import EmployeeDao.Employee;
 import EmployeeMethod.Employeemethod;
-import commoditiesDao.commodities;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,31 +12,29 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet(name = "ECInsert")
-public class ECInsert extends HttpServlet {
+@WebServlet(name = "ECUpdate")
+public class ECUpdate extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //处理中文问题
         request.setCharacterEncoding("utf-8");
         //获取
-        Employee employee = new Employee();
         HttpSession session = request.getSession();
-        String uname = String.valueOf(session.getAttribute("username"));
-        String comname = request.getParameter("comname");
-        int esales = Integer.parseInt(request.getParameter("comsales"));
-        System.out.println("名字："+uname+",商品名字："+comname+",销售量:"+esales);
+        Employee employee = new Employee();
         employee.setUsername(String.valueOf(session.getAttribute("username")));
         employee.setComname(request.getParameter("comname"));
         employee.setEsales(Integer.parseInt(request.getParameter("comsales")));
+        String uname = String.valueOf(session.getAttribute("username"));
+        String comname = request.getParameter("comname");
+        int comsales = Integer.parseInt(request.getParameter("comsales"));
         try {
             if (Employeemethod.FindComByEmployess(comname, uname)>0){
-                request.setAttribute("msg","添加的商品已经存在！不能继续添加!");
-                request.getRequestDispatcher("/esales/insertCom.jsp").forward(request,response);
-//                MsgException("添加的商品已经存在！不能继续添加!");
-            }else{
                 Employeemethod employeemethod = new Employeemethod();
-                employeemethod.InsertCom(employee);
-                request.setAttribute("msg","添加成功!");
-                request.getRequestDispatcher("/esales/insertCom.jsp").forward(request,response);
+                employeemethod.UpdateCom(employee,uname);
+                request.setAttribute("msg","修改成功!");
+                request.getRequestDispatcher("/esales/UpdateCom.jsp").forward(request,response);
+            }else if ((comname == null) || (request.getParameter("comsales")==null)){
+                request.setAttribute("msg","输入的值不对，请重新输入!");
+                request.getRequestDispatcher("/esales/UpdateCom.jsp").forward(request,response);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -45,6 +42,6 @@ public class ECInsert extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request,response);
+            doPost(request,response);
     }
 }

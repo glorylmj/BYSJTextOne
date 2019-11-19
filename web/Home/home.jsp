@@ -52,14 +52,18 @@
             欢迎使用易管理进销存系统！
             <%
                 String name = "";
-                String uname = (String) request.getAttribute("username");
-                if (uname != null){
-                    name = uname;
+                String uuname = String.valueOf(session.getAttribute("username"));
+                session.setAttribute("username",uuname);
+                System.out.println("这是测试传过来的名字："+uuname);
+//                String uname = (String) request.getAttribute("username");
+                if (uuname != null){
+                    name = uuname;
+
                 }
             %>
             <font color="red">
                 <b>
-                    <%=uname
+                    <%=uuname
                     %>
                 </b>
             </font>
@@ -90,11 +94,11 @@
         %>
         <tr>
             <td colspan="7" style="font-size:12px">
-                <a href="home.jsp?pageIndex=1">首页</a>
+                <a href="/Home/home.jsp?pageIndex=1">首页</a>
                 <%
                     if(pages.getPageIndex()>1) {
                 %>
-                <a href="home.jsp?pageIndex=<%=(pageIndex-1)%>">上一页</a>
+                <a href="/Home/home.jsp?pageIndex=<%=(pageIndex-1)%>">上一页</a>
                 <%
                     }
                 %>
@@ -107,7 +111,7 @@
                 <%
                 } else {
                 %>
-                <a href="home.jsp?pageIndex=<%=i%>">[<%=i %>]</a>
+                <a href="/Home/home.jsp?pageIndex=<%=i%>">[<%=i %>]</a>
                 <%
                         }
                     }
@@ -115,11 +119,11 @@
                 <%
                     if(pageIndex<totalPage) {
                 %>
-                <a href="home.jsp?pageIndex=<%=(pageIndex+1)%>">下一页</a>
+                <a href="/Home/home.jsp?pageIndex=<%=(pageIndex+1)%>">下一页</a>
                 <%
                     }
                 %>
-                <a href="home.jsp?pageIndex=<%=totalPage%>">尾页</a>
+                <a href="/Home/home.jsp?pageIndex=<%=totalPage%>">尾页</a>
             </td>
         </tr>
     </table>

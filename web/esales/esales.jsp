@@ -18,6 +18,7 @@
         int pageIndex = pages.getPageIndex();
         List<Employee> employees = pages.getDatas();
         String username = (String) session.getAttribute("username");
+
         session.setAttribute("username",username);
 //        String username = request.getParameter("username");
 //        session.setAttribute("username",username);
@@ -41,7 +42,9 @@
     <tr>
         <td><%=e.getComname() %></td>
         <td><%=e.getEsales() %></td>
-        &nbsp;
+        &nbsp;<%
+            session.setAttribute("sales",e.getEsales());
+        %>
     </tr>
     <%
         }
@@ -83,7 +86,7 @@
 </table>
 
 <a href="insertCom.jsp">添加</a>
-<a>删除</a>
-<a>修改</a>
+<a href="deleteCom.jsp">删除</a>
+<a href="UpdateCom.jsp">修改</a>
 </body>
 </html>
