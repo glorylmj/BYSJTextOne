@@ -26,8 +26,26 @@
         }
     </script>
     <style>
+        body{
+            background:url("../picture/bj.jpg") no-repeat;
+            height:100%;
+            width:100%;
+            overflow: hidden;
+            background-size:cover;
+        }
         .div1{
+            width: 300px;
+            height: 300px;
+            background-color: white;
+            margin-left: 45%;
+            margin-top: 10%;
             text-align: center;
+            overflow: hidden;
+        }
+        .span1{
+            font-size: 25px;
+            font-weight: bold;
+            margin-top: 50px;
         }
     </style>
 <%--    <script type="application/javascript">--%>
@@ -37,7 +55,8 @@
 <%--    </script>--%>
 </head>
 <body>
-    <div class="div1">
+  <div class="div1">
+        <span class="span1">进销存</span><span class="span2">2019</span>
         <form action="/Login" method="post">
             <%
                 String message = "";
@@ -52,11 +71,11 @@
                     %>
                 </b>
             </font><br>
-            用户名:<input type="text" name="username" ><br>
-            密&nbsp;&nbsp;码:<input type="password" name="password"><br>
-             验证码：<input type="text" name="verifyCode"><br>
+            用户名：<input type="text" name="username" ><br><br>
+            密&nbsp;&nbsp;&nbsp;码：<input type="password" name="password"><br><br>
+            验证码：<input type="text" name="verifyCode"><br><br>
             <img src="/VeriftyCode" id="img">
-            <a href="javascript:_change()">换一张</a><br>
+            <a href="javascript:_change()">换一张</a><br><br>
             <input type="submit" value="登录"> &nbsp;&nbsp;&nbsp;<input type="button" onclick="zhuce()" value="注册">
         </form>
     </div>

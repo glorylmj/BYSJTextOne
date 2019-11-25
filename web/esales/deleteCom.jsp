@@ -16,6 +16,13 @@
         销售员:<input type="text" value="<%=session.getAttribute("username")%>" name="username" disabled>
         商品名称：<input type="text" name="comname">
         <input type="submit" value="删除"><br>
+        <input type="button" value="返回" onclick="back()">
+        <script>
+            function back() {
+                window.location.href="/employees/employees.jsp"
+            }
+
+        </script>
         <%
             String message = "";
             String msg = (String) request.getAttribute("msg");

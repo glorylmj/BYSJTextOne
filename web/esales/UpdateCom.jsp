@@ -17,6 +17,13 @@
         商品名称：<input type="text" name="comname">
         增加销售数量:<input type="text" name="comsales">
         <input type="submit" value="修改"><br>
+        <input type="button" value="返回" onclick="back()">
+        <script>
+            function back() {
+                window.location.href="/employees/employees.jsp"
+            }
+
+        </script>
         <%
             String message = "";
             String msg = (String) request.getAttribute("msg");

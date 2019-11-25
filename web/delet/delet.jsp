@@ -9,6 +9,12 @@
 <html>
 <head>
     <title>删除页面</title>
+    <script>
+        function back() {
+            window.location.href="/Home/home.jsp"
+        }
+
+    </script>
 </head>
 <body>
 <%
@@ -24,9 +30,12 @@
         %>
     </b>
 </font>
+    <div style="text-align: center">
     <form action="/DeleteCommodities">
-        商品名称：<input type="text" name="cname">
+        商品名称：<input type="text" name="cname"><br><br>
         <input type="submit" value="确定删除">
+        <input type="button" value="返回" onclick="back()">
     </form>
+</div>
 </body>
 </html>

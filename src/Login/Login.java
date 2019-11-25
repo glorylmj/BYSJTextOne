@@ -60,16 +60,25 @@ public class Login extends HttpServlet {
              *
              */
             if (identity==1) {
-//              HttpSession session = request.getSession();//获取session
-              // session.setAttribute("username", username);//向域中保存session
+             HttpSession session = request.getSession();//获取session
+              session.setAttribute("username", username);//向域中保存session
+                if (username != null){
+                    session.setAttribute("username",username);
+                }
 //                response.sendRedirect("/Home/home.jsp");
                 request.setAttribute("username",username);
                 request.getRequestDispatcher("/Home/home.jsp").forward(request,response);
+//                request.getSession().setAttribute("username", username);
             }else {
-
  //          session.setAttribute("username", username);//向域中保存session
 //                response.sendRedirect("employees/employees.jsp");
+                HttpSession session = request.getSession();//获取session
+                session.setAttribute("username", username);//向域中保存session
+                if (username != null){
+                    session.setAttribute("username",username);
+                }
                 request.setAttribute("username",username);
+//                request.getSession().setAttribute("username", username);
                 request.getRequestDispatcher("employees/employees.jsp").forward(request,response);
             }
         }else {
@@ -78,6 +87,7 @@ public class Login extends HttpServlet {
              * 如果失败，保存错误信息到request域中
              * 转发到login.jsp
              */
+
             request.setAttribute("msg","用户名或密码错误");
             RequestDispatcher qr = request.getRequestDispatcher("/login/login.jsp");//得到一个转发器
             qr.forward(request,response);//转发

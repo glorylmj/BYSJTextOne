@@ -13,10 +13,17 @@
 <body>
     <form action="/ECInsert" >
             <table>
-                销售员:<input type="text" value="<%=session.getAttribute("username")%>" name="username" disabled>
-                商品名称：<input type="text" name="comname">
-                销售数量: <input type="text" name="comsales">
+                销售员:<input type="text" value="<%=session.getAttribute("username")%>" name="username" disabled><br><br>
+                商品名称：<input type="text" name="comname"><br><br>
+                销售数量: <input type="text" name="comsales"><br><br>
                 <input type="submit" value="添加"><br>
+                <input type="button" value="返回" onclick="back()">
+                <script>
+                    function back() {
+                        window.location.href="/employees/employees.jsp"
+                    }
+
+                </script>
                 <%
                     String message = "";
                     String msg = (String) request.getAttribute("msg");

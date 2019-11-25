@@ -41,8 +41,6 @@
         Pager<commodities> pages = com.FindAll();
         int pageIndex = pages.getPageIndex();
         List<commodities> commodities = pages.getDatas();
-        String username = request.getParameter("username");
-        session.setAttribute("username",username);
     %>
 
 </head>
@@ -52,18 +50,18 @@
             欢迎使用易管理进销存系统！
             <%
                 String name = "";
-                String uuname = String.valueOf(session.getAttribute("username"));
-                session.setAttribute("username",uuname);
-                System.out.println("这是测试传过来的名字："+uuname);
+                String uname = (String) session.getAttribute("username");
+//                HttpSession session1 = request.getSession();
+    //            System.out.println("这是测试传过来的名字："+uname);
 //                String uname = (String) request.getAttribute("username");
-                if (uuname != null){
-                    name = uuname;
+                if (uname != null){
+                    name = uname;
 
                 }
             %>
             <font color="red">
                 <b>
-                    <%=uuname
+                    <%=uname
                     %>
                 </b>
             </font>
@@ -135,6 +133,13 @@
         <a href="../delet/delet.jsp">删除商品</a>
         <a href="../update/update.jsp">修改商品</a>
         <a href="../adminUpdatePass/updatepass.jsp">修改密码</a>
+        <script>
+            function back() {
+                window.location.href="/login/login.jsp"
+            }
+
+        </script>
+        <input type="button" value="注销" onclick="back()">
     </div>
 
 </body>

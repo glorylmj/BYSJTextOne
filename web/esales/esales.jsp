@@ -51,11 +51,11 @@
     %>
     <tr>
         <td colspan="7" style="font-size:12px">
-            <a href="esales.jsp?pageIndex=1">首页</a>
+            <a href="/esales/esales.jsp?pageIndex=1">首页</a>
             <%
                 if(pages.getPageIndex()>1) {
             %>
-            <a href="esales.jsp?pageIndex=<%=(pageIndex-1)%>">上一页</a>
+            <a href="/esales/esales.jsp?pageIndex=<%=(pageIndex-1)%>">上一页</a>
             <%
                 }
             %>
@@ -68,7 +68,7 @@
             <%
             } else {
             %>
-            <a href="esales.jsp?pageIndex=<%=i%>">[<%=i %>]</a>
+            <a href="/esales/esales.jsp?pageIndex=<%=i%>">[<%=i %>]</a>
             <%
                     }
                 }
@@ -76,11 +76,11 @@
             <%
                 if(pageIndex<totalPage) {
             %>
-            <a href="esales.jsp?pageIndex=<%=(pageIndex+1)%>">下一页</a>
+            <a href="/esales/esales.jsp?pageIndex=<%=(pageIndex+1)%>">下一页</a>
             <%
                 }
             %>
-            <a href="esales.jsp?pageIndex=<%=totalPage%>">尾页</a>
+            <a href="/esales/esales.jsp?pageIndex=<%=totalPage%>">尾页</a>
         </td>
     </tr>
 </table>
@@ -88,5 +88,12 @@
 <a href="insertCom.jsp">添加</a>
 <a href="deleteCom.jsp">删除</a>
 <a href="UpdateCom.jsp">修改</a>
+<input type="button" value="返回" onclick="back()">
+<script>
+    function back() {
+        window.location.href="/employees/employees.jsp"
+    }
+
+</script>
 </body>
 </html>

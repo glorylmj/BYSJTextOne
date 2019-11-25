@@ -9,6 +9,31 @@
 <html>
 <head>
     <title>添加商品</title>
+<style>
+        body{
+            background:url("../picture/xsp.jpg") no-repeat;
+            height:100%;
+            width:100%;
+            overflow: hidden;
+            background-size:cover;
+        }
+        .d0{
+            text-align: center;
+            width: 300px;
+            margin-left: 800px;
+            margin-top: 350px;
+            font-size: 15px;
+            font-weight: bold;
+            color: white;
+            background-color: darkcyan;
+        }
+    </style>
+    <script>
+        function back() {
+            window.location.href="/Home/home.jsp"
+        }
+
+    </script>
 </head>
 <body>
 <%
@@ -24,13 +49,16 @@
         %>
     </b>
 </font>
+<div class="d0">
     <form action="/InsertCommdities">
-        商品名称：<input type="text" name="comname">
-        销售量：<input type="text" name="comsales">
-        仓库存货：<input type="text" name="comInventory">
-        单价:<input type="text" name="price">
-        生产商：<input type="text" name="source">
-        <input type="submit" value="添加商品">
+        <br><br>商品名称：<input type="text" name="comname"><br><br>
+        销&nbsp;&nbsp;售&nbsp;&nbsp;量：<input type="text" name="comsales"><br><br>
+        仓库存货：<input type="text" name="comInventory"><br><br>
+        单&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价：<input type="text" name="price"><br><br>
+        生&nbsp;&nbsp;产&nbsp;&nbsp;商：<input type="text" name="source"><br><br>
+        <input type="submit" value="添加商品"><br><br>
+        <input type="button" value="返回" onclick="back()">
     </form>
+</div>
 </body>
 </html>
